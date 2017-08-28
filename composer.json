@@ -19,6 +19,9 @@
   "autoload": {
     "psr-4": {
       "Reflection\\Api\\Doc\\": "src/"
-    }
+    },
+    "files": [
+      "src/route.php"
+    ]
   }
 }

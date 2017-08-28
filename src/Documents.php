@@ -15,7 +15,7 @@ class Documents
      * @author lz
      * @date 2016-6-15
      */
-    public function index(){
+    public function run(){
         $filename=scandir(YIN_PATH."/controller");
         $result = $data = array();
         foreach($filename as $val) {
