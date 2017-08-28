@@ -1,11 +1,5 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: momo
- * Date: 2017/8/28
- * Time: 下午3:04
- */
 namespace Reflection\Api\Doc;
 
 class Reflection
