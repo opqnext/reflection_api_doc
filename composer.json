@@ -1,6 +1,6 @@
 {
   "name": "opqnext/reflection-api-doc",
-  "description": "A library that automatically generates API documents for PHP",
+  "description": "一个基于 Thinkphp5 的 api 文档自动生成工具",
   "type": "library",
   "keywords": [
     "php",
