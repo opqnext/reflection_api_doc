@@ -43,6 +43,7 @@ class Documents
      * @date 2017-8-15
      */
     public function run(){
+        $this->is_config();
         $class = $this->config['class'];
         $result = $data = array();
         foreach ($class as $val){
@@ -70,30 +71,25 @@ class Documents
         }
     }
 
+    private function is_config()
+    {
+        if(!$this->config) {
+            echo "<h1>没有找到配置文件 documents.php</h1>";
+            return;
+        }
+    }
+
     private function Item($class,$method)
     {
         $re = new Reflection($class);
         $res = $re->getMethod($method);
         $item = $this->getData($res);
         return [
-            'title'=>isset($item['title'])?$item['title']:'未配置标题',
-            'desc'=>isset($item['desc'])?$item['desc']:'未配置描述信息',
-            'params'=>isset($item['params'])?$item['params']:[],
-            'returns'=>isset($item['returns'])?$item['returns']:[],
+            'title'=>isset($item['title'])&&!empty($item['title'])?$item['title']:'未配置标题',
+            'desc'=>isset($item['desc'])&&!empty($item['desc'])?$item['desc']:'未配置描述信息',
+            'params'=>isset($item['params'])&&!empty($item['params'])?$item['params']:[],
+            'returns'=>isset($item['returns'])&&!empty($item['returns'])?$item['returns']:[],
         ];
-    }
-
-    /**
-     * 获取接口名称
-     * @param $class
-     * @param $method
-     * @return mixed
-     */
-    public function Mtitle($class,$method){
-        $re = new Reflection($class);
-        $res = $re->getMethod($method);
-        $item = $this->getData($res);
-        return $item['title'];
     }
 
     /**
