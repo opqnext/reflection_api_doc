@@ -81,6 +81,7 @@ class Article extends Controller
 ![](https://image.opqnext.com/grape_2.png)
 
 4. 支持
+
 如果有使用自动生成文档的需求或者之类的，欢迎加入 QQ群:452209691 共同探讨。
 
 
