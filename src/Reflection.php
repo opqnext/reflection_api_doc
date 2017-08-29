@@ -68,7 +68,7 @@ class Reflection
                 $pos = 0;
                 $content = "";
                 preg_match("/@[a-z]*/i", $v, $tag);
-                if ($tag[0] && array_key_exists($tag[0], $this->docTag)) {
+                if (isset($tag[0]) && array_key_exists($tag[0], $this->docTag)) {
                     $pos = stripos($v, $tag[0]) + strlen($tag[0]);
                     if ($pos > 0) {
                         $content = trim(substr($v, $pos));

@@ -8,33 +8,79 @@
 
 namespace Reflection\Api\Doc;
 
+use think\Config;
+use think\Request;
+use think\View;
+
 class Documents
 {
+    private $view;
+    private $config;
+    private $request;
+
+    private $template = [
+        'type'         => 'Think',
+        'view_path'    => '',
+        'view_suffix'  => 'html',
+        'view_depr'    => DS,
+        'tpl_begin'    => '{',
+        'tpl_end'      => '}',
+        'taglib_begin' => '{',
+        'taglib_end'   => '}',
+    ];
+
+    public function __construct()
+    {
+        $this->request = Request::instance();
+        $this->template['view_path'] = __DIR__.DS.'view'.DS;
+        $this->view = View::instance($this->template,[]);
+        $this->config = Config::get('documents');
+    }
+
     /**
      * 接口的列表页
-     * @author lz
-     * @date 2016-6-15
+     * @author opqnext
+     * @date 2017-8-15
      */
     public function run(){
-        $filename=scandir(YIN_PATH."/controller");
+        $class = $this->config['class'];
         $result = $data = array();
-        foreach($filename as $val) {
-            if($val != '.' && $val != '..' && $val != 'DocController.php'&& $val != 'IndexController.php'){
-                $val = substr($val,0,strrpos($val,'.'));
-                $methods = $this->getMethods("controller\\$val",'public');
-                foreach($methods as $k=>$v){
-                    $meth_v['name'] = $v;
-                    $meth_v['title'] = $this->Mtitle("controller\\$val",$v);
-                    $methods[$k] = $meth_v;
-                }
-                $data['title'] = $this->Ctitle("controller\\$val");
-                $data['class'] = $val;
-                $data['method'] = $methods;
-                $result[] = $data;
+        foreach ($class as $val){
+            $methods = $this->getMethods($val,'public');
+            foreach($methods as $k=>$v){
+                $meth_v = $this->Item($val,$v);
+                $meth_v['name'] = $v;
+
+                $methods[$k] = $meth_v;
             }
+            $data['title'] = $this->Ctitle($val);
+            $data['class'] = $val;
+            $data['param'] = str_replace('\\','-',$val);
+            $data['method'] = $methods;
+            $result[] = $data;
+
         }
-        $this->assign('list',$result);
-        $this->display('doc/index.html');
+        $this->view->assign('list', $result);
+        $this->view->assign('title', $this->config['title']);
+        $this->view->assign('description', $this->config['description']);
+        if(is_file($this->template['view_path'].$this->config['template'].'.html')){
+            return $this->view->fetch($this->config['template']);
+        } else {
+            return $this->view->fetch('error');
+        }
+    }
+
+    private function Item($class,$method)
+    {
+        $re = new Reflection($class);
+        $res = $re->getMethod($method);
+        $item = $this->getData($res);
+        return [
+            'title'=>isset($item['title'])?$item['title']:'未配置标题',
+            'desc'=>isset($item['desc'])?$item['desc']:'未配置描述信息',
+            'params'=>isset($item['params'])?$item['params']:[],
+            'returns'=>isset($item['returns'])?$item['returns']:[],
+        ];
     }
 
     /**
@@ -60,27 +106,6 @@ class Documents
         $res = $re->getClass();
         $item = $this->getData($res);
         return $item['title'];
-    }
-
-    /**
-     * 处理每个接口的数据
-     * @author lz
-     * @date 2016-6-15
-     */
-    public function detail(){
-        $class = $this->get_gp('class','G');
-        $method = $this->get_gp('method','G');
-
-        $re = new Reflection("controller\\$class");
-        $res = $re->getMethod($method);
-        $item = $this->getData($res);
-        $this->assign('url',Yin::url('doc|index'));
-        $this->assign('title',$item['title']);
-        $this->assign('desc',$item['desc']);
-        $this->assign('params',$item['params']);
-        $this->assign('return',$item['returns']);
-        $this->display('doc/article.html');
-
     }
 
     /**
