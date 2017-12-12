@@ -92,8 +92,8 @@ return [
 | - | - | - |
 | @title | 标题 | 文档生成的类方法标题 |
 | @desc | 描述 | 格式如下，地址、请求方式、备注等 |
-| @param | 接收参数 | 格式如下，名称、类型、是否必须、默认值、说明等 |
-| @return | 返回参数 | 格式如下，名称、类型、是否必须、说明等 |
+| @param | 接收参数 | 格式如下，name:名称、type:类型、required:是否必须、default:默认值、desc:说明 |
+| @return | 返回参数 | 格式如下，name:名称、type:类型、required:是否必须、desc:说明、level：层级 |
 
 类的具体实现方法：
 
