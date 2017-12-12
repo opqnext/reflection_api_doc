@@ -2,9 +2,71 @@
 
 将会是一个基于 thinkphp5 的PHP自动生成api文档的库
 
-1. 使用方法：
+1. 安装：
 
-在 extra 目录下创建文件名为 documents.php 的配置文件。
+安装有两种方法:
+
+直接执行:
+```
+composer require "opqnext/reflection-api-doc:v1.0_beta"
+```
+
+或者修改composer.json文件
+```
+// 在require里加上
+"opqnext/reflection-api-doc": "v1.0_beta"
+
+// 可以在文件末加上这个几行 这是国内的镜像下载速度较快。
+// 据说每分钟同步，但是我觉得不是
+"repositories": {
+    "packagist": {
+        "type": "composer",
+        "url": "https://packagist.phpcomposer.com"
+    }
+}
+```
+
+我的composer.json示例:
+```
+{
+    "name": "topthink/think",
+    "description": "the new thinkphp framework",
+    "type": "project",
+    "keywords": [
+        "framework",
+        "thinkphp",
+        "ORM"
+    ],
+    "homepage": "http://thinkphp.cn/",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "liu21st",
+            "email": "liu21st@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "topthink/framework": "^5.0",
+        "opqnext/reflection-api-doc": "v1.0_beta"
+    },
+    "extra": {
+        "think-path": "thinkphp"
+    },
+    "config": {
+        "preferred-install": "dist"
+    },
+    "repositories": {
+        "packagist": {
+            "type": "composer",
+            "url": "https://packagist.phpcomposer.com"
+        }
+    }
+}
+```
+2. 使用方法
+
+在 application/extra 目录下创建文件名为 documents.php 的配置文件。
 
 配置文件内容如下：
 
@@ -15,9 +77,8 @@ return [
     'description' => '"想的美app" | APi接口文档等等。',
     'template' => 'apple', // 苹果绿:apple 葡萄紫:grape
     'class' => [
-        'app\index\controller\Demo',
-        'app\index\controller\Product',
-        'app\index\controller\Store',
+        'app\index\controller\Article'
+        // ...
     ],
 ];
 ```
@@ -68,6 +129,11 @@ class Article extends Controller
         //... 具体实现方法
     }
 ```
+
+编辑好配置文件之后 直接打开浏览器访问 http://localhost/api/documents 即可看到文档页。
+
+demo预览地址:http://beta.tp.opqnext.com:8086/api/documents
+
 3. 预览
 
 长相一般的苹果绿：
