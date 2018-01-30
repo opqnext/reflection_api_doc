@@ -1,0 +1,27 @@
+{
+  "name": "lxnext/autocreate-api-doc",
+  "description": "一个基于 Thinkphp5 的 api 文档自动生成工具",
+  "type": "library",
+  "keywords": [
+    "php",
+    "api-doc"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "lixiang",
+      "email": "945559567@qq.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.3.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Reflection\\Api\\Doc\\": "src/"
+    },
+    "files": [
+      "src/route.php"
+    ]
+  }
+}
