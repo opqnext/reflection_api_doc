@@ -1,9 +1,8 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: momo
- * Date: 2017/8/28
- * Time: 下午4:18
+ * 自动生成文档类
+ * @author opq.next
+ * @date 2017-08-28
  */
 
 namespace Reflection\Api\Doc;
