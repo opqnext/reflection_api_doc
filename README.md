@@ -147,7 +147,7 @@ demo预览地址:http://beta.tp.opqnext.com:8086/api/documents
 
 注意: 项目中 extend 目录为独立安装使用包。如果你使用composer安装，并且觉得 extend 目录极其碍眼，可以将其删除，并不影响正常使用。\(^o^)/~
 
-####  独立安装使用
+####  TP5独立安装使用
 
 1. 安装
 直接下载或者拷贝目录extend下的reflection，放到项目的extend下。
