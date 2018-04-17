@@ -9,7 +9,7 @@
 [![Latest Unstable Version](https://poser.pugx.org/opqnext/reflection-api-doc/v/unstable.svg)](https://packagist.org/packages/opqnext/reflection-api-doc) 
 [![License](https://poser.pugx.org/opqnext/reflection-api-doc/license.svg)](https://packagist.org/packages/opqnext/reflection-api-doc)
 
-两种使用方式，1.composer安装使用。2.TP5独立安装使用。
+两种使用方式，1.composer安装使用。2.tp5独立安装使用。
 
 ####  composer 方式安装
 
