@@ -1,6 +1,17 @@
-# reflection_api_doc
+<p align="center">
+    <h1 align="center">reflection_api_doc</h1>
+    <br>
+</p>
 
-将会是一个基于 thinkphp5 的PHP自动生成api文档的库
+这是一个基于 thinkphp5 的PHP自动生成api文档的库
+
+[![Latest Stable Version](https://poser.pugx.org/opqnext/reflection-api-doc/v/stable.svg)](https://packagist.org/packages/phpmailer/phpmailer) 
+[![Total Downloads](https://img.shields.io/packagist/dt/opqnext/reflection-api-doc.svg)](https://packagist.org/packages/opqnext/reflection-api-doc)
+[![Latest Unstable Version](https://poser.pugx.org/opqnext/reflection-api-doc/v/unstable.svg)](https://packagist.org/packages/phpmailer/phpmailer) [![License](https://poser.pugx.org/opqnext/reflection-api-doc/license.svg)](https://packagist.org/packages/opqnext/reflection-api-doc)
+
+两种使用方式，1.composer安装使用。2.独立安装使用。
+
+#####  composer 方式安装
 
 1. 安装：
 
@@ -134,7 +145,27 @@ class Article extends Controller
 
 demo预览地址:http://beta.tp.opqnext.com:8086/api/documents
 
-3. 预览
+注意: 项目中 extend 目录为独立安装使用包。如果你使用composer安装，并且觉得 extend 目录极其碍眼，可以将其删除，并不影响正常使用。\(^o^)/~
+
+#####  独立安装使用
+
+1. 安装
+直接下载或者拷贝目录extend下的reflection，放到项目的extend下。
+
+2. 使用方法
+同样的，在 application/extra 目录下创建文件名为 documents.php 的配置文件。文件内容如上所示。
+
+在 application 目录下的 common.php 文件中填加如下内容：
+```
+use think\Route;
+Route::get('doc','reflection\Documents@run');
+```
+
+编辑好配置文件之后 直接打开浏览器访问 http://localhost/doc 即可看到文档页。
+
+demo预览地址:http://beta.tp.opqnext.com:8086/doc
+
+- 预览
 
 长相一般的苹果绿：
 
