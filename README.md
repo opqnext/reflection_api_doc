@@ -6,7 +6,8 @@
 
 [![Latest Stable Version](https://poser.pugx.org/opqnext/reflection-api-doc/v/stable.svg)](https://packagist.org/packages/phpmailer/phpmailer) 
 [![Total Downloads](https://img.shields.io/packagist/dt/opqnext/reflection-api-doc.svg)](https://packagist.org/packages/opqnext/reflection-api-doc)
-[![Latest Unstable Version](https://poser.pugx.org/opqnext/reflection-api-doc/v/unstable.svg)](https://packagist.org/packages/phpmailer/phpmailer) [![License](https://poser.pugx.org/opqnext/reflection-api-doc/license.svg)](https://packagist.org/packages/opqnext/reflection-api-doc)
+[![Latest Unstable Version](https://poser.pugx.org/opqnext/reflection-api-doc/v/unstable.svg)](https://packagist.org/packages/phpmailer/phpmailer) 
+[![License](https://poser.pugx.org/opqnext/reflection-api-doc/license.svg)](https://packagist.org/packages/opqnext/reflection-api-doc)
 
 两种使用方式，1.composer安装使用。2.独立安装使用。
 
