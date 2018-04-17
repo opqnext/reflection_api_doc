@@ -1,6 +1,5 @@
 <p align="center">
     <h1 align="center">reflection_api_doc</h1>
-    <br>
 </p>
 
 这是一个基于 thinkphp5 的PHP自动生成api文档的库
