@@ -19,13 +19,13 @@
 
 直接执行:
 ```
-composer require "opqnext/reflection-api-doc:v1.0_beta"
+composer require "opqnext/reflection-api-doc:v1.0"
 ```
 
 或者修改composer.json文件
 ```
 // 在require里加上
-"opqnext/reflection-api-doc": "v1.0_beta"
+"opqnext/reflection-api-doc": "v1.0"
 
 // 可以在文件末加上这个几行 这是国内的镜像下载速度较快。
 // 据说每分钟同步，但是我觉得不是
@@ -150,9 +150,11 @@ demo预览地址:http://beta.tp.opqnext.com:8086/api/documents
 ####  tp5独立安装使用
 
 1. 安装
+
 直接下载或者拷贝目录extend下的reflection，放到项目的extend下。
 
 2. 使用方法
+
 同样的，在 application/extra 目录下创建文件名为 documents.php 的配置文件。文件内容如上所示。
 
 在 application 目录下的 common.php 文件中填加如下内容：
