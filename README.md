@@ -84,8 +84,8 @@ composer require "opqnext/reflection-api-doc:v1.0"
 ```
 <?php
 return [
-    'title' => "北京想得美科技有限公司",  
-    'description' => '"想的美app" | APi接口文档等等。',
+    'title' => "thinkphp5接口自动生成文档",  
+    'description' => 'thinkphp5 | api接口文档等等。',
     'template' => 'apple', // 苹果绿:apple 葡萄紫:grape
     'class' => [
         'app\index\controller\Article'
