@@ -2,7 +2,7 @@
     <h1 align="center">reflection_api_doc</h1>
 </p>
 
-这是一个基于 thinkphp5 的PHP自动生成api文档的库
+这是一个基于 thinkphp5.0 的PHP自动生成api文档的库
 
 [![Latest Stable Version](https://poser.pugx.org/opqnext/reflection-api-doc/v/stable.svg)](https://packagist.org/packages/opqnext/reflection-api-doc) 
 [![Total Downloads](https://img.shields.io/packagist/dt/opqnext/reflection-api-doc.svg)](https://packagist.org/packages/opqnext/reflection-api-doc)
@@ -97,7 +97,7 @@ return [
 
 **重点:** class 为将要生成文档的类(带命名空间)
 
-2. 示例：
+1. 示例：
 
 | 注释参数 | 含义 | 说明 |
 | - | - | - |
@@ -178,6 +178,18 @@ demo预览地址:http://beta.tp.opqnext.com:8086/doc
 ![](https://image.opqnext.com/grape.jpg)
 
 ![](https://image.opqnext.com/grape_2.png)
+
+3. thinkphp5.1需要自行修改Documents类。
+```
+5 use think\facade\Config;
+6 use think\facade\Request;
+7 use think\facade\View;
+
+28 $this->view = View::init($this->template,[])
+
+//然后调试一下路径^_^
+
+```
 
 4. 支持
 
