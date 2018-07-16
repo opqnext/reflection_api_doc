@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{$title}</title>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- 可选的Bootstrap主题文件（一般不使用） -->
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"></script>
+
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <style>
+        /* Custom Styles */
+        ul.nav-tabs{
+            width: 200px;
+            margin-top: 20px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);
+        }
+        ul.nav-tabs li{
+            margin: 0;
+            border-top: 1px solid #ddd;
+        }
+        ul.nav-tabs li:first-child{
+            border-top: none;
+        }
+        ul.nav-tabs li a{
+            margin: 0;
+            padding: 8px 16px;
+            border-radius: 0;
+        }
+        ul.nav-tabs li.active a, ul.nav-tabs li.active a:hover{
+            color: #fff;
+            background: #0088cc;
+            border: 1px solid #0088cc;
+        }
+        ul.nav-tabs li:first-child a{
+            border-radius: 4px 4px 0 0;
+        }
+        ul.nav-tabs li:last-child a{
+            border-radius: 0 0 4px 4px;
+        }
+        ul.nav-tabs.affix{
+            top: 30px;
+        }
+    </style>
+</head>
+<body data-spy="scroll" data-target="#myScrollspy">
+<div class="container">
+    <div style="margin-top: 25px;">
+        <span class="text-muted" style="vertical-align: bottom;font-size: 28px; margin-left: 5px;">{$title}</span>
+    </div>
+</div>
+<div class="container"><hr style="color: #9d9d9d"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-3" id="myScrollspy">
+            <ul class="nav nav-tabs nav-stacked" data-spy="affix" data-offset-top="125">
+                {foreach name="list" item="vo" key="k" }
+                <li {if $k==0}class="active"{/if}><a href="#section-{$k}">{$vo.title}</a></li>
+                {/foreach}
+            </ul>
+        </div>
+        <div class="col-xs-9">
+
+            <div class="alert alert-warning">
+                <button type="button" class="close" data-dismiss="alert"
+                        aria-hidden="true">
+                    &times;
+                </button>
+                {$description}
+            </div>
+            {foreach name="list" item="vol" key="key"}
+            <h1 id="section-{$key}">{$vol.title}</h1>
+            <p class="lead"><code>{$vol.class}</code></p>
+            {foreach name="$vol.method" item="vo" key="k"}
+            <h3 id="#{$key}-{$k}-{$vo.name}">{$k+1}. {$vo.title}</h3>
+            <p>方法名: <code>{$vo.name}()</code></p>
+            <div class="panel panel-info">
+                <div class="panel-body">
+                    {$vo.desc}
+                </div>
+            </div>
+            <table class="table table-bordered table-hover">
+                <caption>接收参数</caption>
+                <thead>
+                <tr class="success">
+                    <td>字段名称</td>
+                    <th>字段类型</th>
+                    <th>是否必须</th>
+                    <th>默认值</th>
+                    <th>说明</th>
+                </tr>
+                </thead>
+                <tbody>
+                {foreach name="$vo.params" item="v" }
+                <tr>
+                    <th scope="row">{$v.name}</th>
+                    <td class="text-success">{$v.type}</td>
+                    <td class="text-success">{$v.require}</td>
+                    <td class="text-muted">{$v.default}</td>
+                    <td class="text-muted">{$v.desc}</td>
+                </tr>
+                </tbody>
+                {/foreach}
+            </table>
+            <table class="table table-bordered table-hover">
+                <caption>返回参数</caption>
+                <thead>
+                <tr class="success">
+                    <th>字段名称</th>
+                    <th>字段类型</th>
+                    <th>是否必须</th>
+                    <th>说明</th>
+                </tr>
+                </thead>
+                <tbody>
+                {foreach name="$vo.returns" item="v"}
+                <tr>
+                    <th scope="row">{$v.name}</th>
+                    <td class="text-success">{$v.type}</td>
+                    <td class="text-success">{$v.required}</td>
+                    <td class="text-muted">{$v.detail}</td>
+                </tr>
+                {/foreach}
+            </table>
+            {/foreach}
+            <hr/>
+            {/foreach}
+        </div>
+    </div>
+</div>
+<div class="container"><hr style="color: #9d9d9d"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-1"></div>
+        <div class="text-muted">
+            <ul class="list-inline">
+                <li><a href="https://github.com/opqnext/reflection_api_doc" target="_blank">Github</a> <a href="https://packagist.org/packages/opqnext/reflection-api-doc" target="_blank">Composer</a> 本项目源码受 MIT开源协议保护。</li>
+                <li>Copyright &copy; 2017 文档自动生成  All Rights Reserved. </li>
+            </ul>
+        </div>
+        <div class="col-xs-1"></div>
+    </div>
+</div>
+</body>
+</html>
